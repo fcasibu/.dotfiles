@@ -1,0 +1,9 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    font: "GeistMono Nerd Font Mono 12";
+    drun-display-format: "{name}";
+    disable-history: false;
+}
+
+@theme "amber"

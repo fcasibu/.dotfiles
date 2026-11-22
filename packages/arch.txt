@@ -1,0 +1,61 @@
+# Shell and terminal
+zsh
+tmux
+alacritty
+starship
+zoxide
+
+# CLI tools
+bat
+eza
+fd
+ripgrep
+fzf
+lazygit
+neovim
+tree-sitter
+unzip
+github-cli
+git-delta
+mpv
+git
+stow
+
+# X11 / i3
+i3-wm
+i3status
+dmenu
+rofi
+dex
+feh
+picom
+i3lock
+xss-lock
+flameshot
+network-manager-applet
+xorg-xrdb
+xorg-xprop
+xorg-xinput
+xorg-xrandr
+xorg-setxkbmap
+xorg-xset
+xclip
+wl-clipboard
+libpulse
+
+# Fonts
+ttf-jetbrains-mono-nerd
+otf-geist-mono-nerd
+ttf-liberation
+noto-fonts-emoji
+
+# Development
+gcc
+gdb
+rust
+valgrind
+man-db
+
+# Documents
+zathura
+zathura-pdf-mupdf

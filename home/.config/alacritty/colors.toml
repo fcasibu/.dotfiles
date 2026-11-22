@@ -1,0 +1,33 @@
+# Alacritty colors
+[colors.primary]
+background = "#0C0C0C"
+foreground = "#A8B590"
+
+[colors.normal]
+black   = "#0C0C0C"
+red     = "#C87A7A"
+green   = "#A7C080"
+yellow  = "#C9B87A"
+blue    = "#6EA896"
+magenta = "#B89BC0"
+cyan    = "#6EA896"
+white   = "#A8B590"
+
+[colors.bright]
+black   = "#6A7A6A"
+red     = "#C87A7A"
+green   = "#A7C080"
+yellow  = "#C9B87A"
+blue    = "#6EA896"
+magenta = "#B89BC0"
+cyan    = "#6EA896"
+white   = "#A8B590"
+
+[colors.selection]
+background = "#6EA896"
+text       = "#0C0C0C"
+
+[colors.cursor]
+cursor = "#A7C080"
+# cursor = "#E57607"
+text   = "#0C0C0C"

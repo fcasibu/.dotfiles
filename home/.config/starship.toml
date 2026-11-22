@@ -1,0 +1,49 @@
+format = "$username$hostname$directory$git_branch$git_status$git_commit$git_state$rust$nodejs$python$cmd_duration$status$jobs$line_break$character"
+
+[cmd_duration]
+min_time = 2000
+show_milliseconds = false
+
+[directory]
+truncate_to_repo = true
+truncation_length = 3
+
+[directory.substitutions]
+"$HOME" = "~"
+
+[git_branch]
+symbol = ""
+
+[git_commit]
+tag_symbol = ""
+
+[git_status]
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+stashed = "≡"
+
+[hostname]
+ssh_only = true
+
+[jobs]
+symbol = ""
+
+[line_break]
+disabled = false
+
+[nodejs]
+symbol = ""
+
+[python]
+symbol = ""
+
+[rust]
+symbol = ""
+
+[status]
+disabled = false
+symbol = "✘"
+
+[username]
+show_always = false
