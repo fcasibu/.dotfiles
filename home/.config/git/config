@@ -47,71 +47,12 @@
 [core]
 	autocrlf = "input"
 	editor = "nvim"
-	pager = "delta"
-
-[delta]
-	dark = true
-	navigate = true
-	line-numbers = true
-	side-by-side = true
-	hyperlinks = true
-	hyperlinks-file-link-format = "nvim {path}:{line}"
-	minus-style = syntax "#1A1A1A"
-	minus-emph-style = syntax bold "#0C0C0C"
-	plus-style = syntax "#3C5C3C"
-	plus-emph-style = syntax bold "#0C0C0C"
-	hunk-header-style = "#A8B590" italic
-	hunk-header-decoration-style = "#2C2C2C" box
-	file-style = "#6EA896" bold
-	file-decoration-style = "#6EA896" ul
-	line-numbers-minus-style = "#C87A7A"
-	line-numbers-plus-style = "#A7C080"
-	line-numbers-zero-style = "#6A7A6A"
-	line-numbers-left-style = "#6A7A6A"
-	line-numbers-right-style = "#6A7A6A"
-	commit-decoration-style = "#6EA896" box
-	commit-style = "#C9B87A" bold
-	blame-palette = "#0C0C0C" "#1A1A1A" "#2C2C2C" "#3C4C3C"
-
-[diff]
-	algorithm = "histogram"
-	colorMoved = "zebra"
-	colorMovedWs = "allow-indentation-change"
-	tool = "nvimdiff"
-
-[difftool]
-	prompt = false
-
-[fetch]
-	prune = true
-	pruneTags = true
 
 [init]
 	defaultBranch = "main"
 
-[interactive]
-	diffFilter = "delta --color-only"
-
-[merge]
-	conflictstyle = "zdiff3"
-
-[pager]
-	blame = "delta"
-	diff = "delta"
-	log = "delta"
-	show = "delta"
-
-[pull]
-	rebase = true
-
-[push]
-	autoSetupRemote = true
-
-[rebase]
-	autoStash = true
-
-[rerere]
-	enabled = true
+[diff]
+    algorithm = "histogram"
 
 [user]
 	email = "projectnevz@gmail.com"
