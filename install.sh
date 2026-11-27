@@ -112,6 +112,7 @@ mkdir -p \
   "$HOME/.config/lazygit" \
   "$HOME/.config/rofi" \
   "$HOME/.config/nvim" \
+  "$HOME/.config/picom" \
   "$HOME/.tmux" \
   "$HOME/.local/share"
 
