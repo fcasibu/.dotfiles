@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+// TODO(fcasibu): make use of yay
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
