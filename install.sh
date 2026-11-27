@@ -6,7 +6,10 @@ cd "$SCRIPT_DIR"
 
 info() { printf "\033[34m[INFO]\033[0m  %s\n" "$1"; }
 ok()   { printf "\033[32m[OK]\033[0m    %s\n" "$1"; }
-err()  { printf "\033[31m[ERROR]\033[0m %s\n" "$1"; }
+warn() { printf "\033[33m[WARN]\033[0m  %s\n" "$1" >&2; }
+err()  { printf "\033[31m[ERROR]\033[0m %s\n" "$1" >&2; }
+
+USER_NAME="$(id -un)"
 
 if [ ! -f /etc/arch-release ]; then
   err "This installer targets Arch Linux."
@@ -22,32 +25,54 @@ done
 
 if [ "$(id -u)" -eq 0 ]; then
   SUDO=""
+  warn "Running as root: dotfiles will be linked into $HOME, not a regular user's home."
 else
+  if ! command -v sudo >/dev/null 2>&1; then
+    err "sudo is required when not running as root."
+    exit 1
+  fi
   SUDO="sudo"
+fi
+
+if [ ! -f packages/arch.txt ]; then
+  err "packages/arch.txt not found."
+  exit 1
 fi
 
 # ── Packages ─────────────────────────────────────────────────────────
 info "Installing packages from packages/arch.txt..."
-grep -vE '^[[:space:]]*(#|$)' packages/arch.txt \
-  | xargs -r $SUDO pacman -S --needed --noconfirm
+sed -e 's/[[:space:]]*#.*$//' -e '/^[[:space:]]*$/d' packages/arch.txt \
+  | xargs -r $SUDO pacman -Syu --needed --noconfirm
 ok "Packages installed"
 
 # ── Back up conflicting paths ────────────────────────────────────────
 backup_path() {
-  path="$1"
-  [ -e "$path" ] || [ -L "$path" ] || return 0
+  target="$1"
+  [ -e "$target" ] || [ -L "$target" ] || return 0
 
-  resolved="$(readlink -f "$path" 2>/dev/null || true)"
-  case "$resolved" in
+  case "$(readlink -f "$target" 2>/dev/null || true)" in
     "$SCRIPT_DIR/home"|"$SCRIPT_DIR/home"/*) return 0 ;;
   esac
 
-  backup="$path.bak.$(date +%Y%m%d%H%M%S)"
-  mv "$path" "$backup"
-  info "Backed up $path -> $backup"
+  if [ -d "$target" ] && [ ! -L "$target" ]; then
+    foreign=0
+    while IFS= read -r f; do
+      case "$(readlink -f "$f" 2>/dev/null || true)" in
+        "$SCRIPT_DIR/home"/*) ;;
+        *) foreign=1 ;;
+      esac
+    done <<EOF
+$(find "$target" ! -type d)
+EOF
+    [ "$foreign" -eq 1 ] || return 0
+  fi
+
+  backup="$target.bak.$(date +%Y%m%d%H%M%S)"
+  mv "$target" "$backup"
+  info "Backed up $target -> $backup"
 }
 
-for path in \
+for target in \
   "$HOME/.zshenv" \
   "$HOME/.Xresources" \
   "$HOME/.tmux.conf" \
@@ -56,6 +81,7 @@ for path in \
   "$HOME/.config/fontconfig/fonts.conf" \
   "$HOME/.config/git/config" \
   "$HOME/.config/i3/config" \
+  "$HOME/.config/i3status" \
   "$HOME/.config/lazygit" \
   "$HOME/.config/rofi" \
   "$HOME/.config/nvim" \
@@ -63,8 +89,12 @@ for path in \
   "$HOME/.tmux/clipboard.conf" \
   "$HOME/.local/share/wallpapers"
 do
-  backup_path "$path"
+  backup_path "$target"
 done
+
+if [ -e "$SCRIPT_DIR/home/.zshrc" ] || [ -L "$SCRIPT_DIR/home/.zshrc" ]; then
+  backup_path "$HOME/.zshrc"
+fi
 
 if [ -L "$HOME/.zshrc" ] && [ ! -e "$HOME/.zshrc" ]; then
   rm "$HOME/.zshrc"
@@ -72,9 +102,6 @@ if [ -L "$HOME/.zshrc" ] && [ ! -e "$HOME/.zshrc" ]; then
 fi
 
 # ── Link dotfiles ────────────────────────────────────────────────────
-# Create the managed directories first so stow descends into them instead of
-# replacing them with a single symlink. This keeps files such as zsh history,
-# git ignore rules outside the repo.
 mkdir -p \
   "$HOME/.config/alacritty" \
   "$HOME/.config/bat" \
@@ -87,6 +114,13 @@ mkdir -p \
   "$HOME/.config/nvim" \
   "$HOME/.tmux" \
   "$HOME/.local/share"
+
+info "Checking for stow conflicts..."
+if ! stow_out="$(stow -n --restow --dir "$SCRIPT_DIR" --target "$HOME" home 2>&1)"; then
+  err "stow found conflicts. Move or remove the files below, then re-run:"
+  printf "%s\n" "$stow_out" >&2
+  exit 1
+fi
 
 info "Linking dotfiles with stow..."
 stow --restow --dir "$SCRIPT_DIR" --target "$HOME" home
@@ -120,20 +154,24 @@ fi
 
 if [ -x "$HOME/.tmux/plugins/tpm/bin/install_plugins" ]; then
   info "Installing tmux plugins..."
-  "$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 || true
+  if ! "$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1; then
+    warn "tmux plugin install failed. Run prefix + I inside tmux to retry."
+  fi
 fi
 
 # ── Neovim plugins ───────────────────────────────────────────────────
 if command -v nvim >/dev/null 2>&1; then
   info "Installing Neovim plugins..."
-  nvim --headless "+Lazy! sync" +qa >/dev/null 2>&1 || true
+  if ! nvim --headless "+Lazy! sync" +qa >/dev/null 2>&1; then
+    warn "Neovim plugin sync failed. Run :Lazy sync inside nvim to retry."
+  fi
 fi
 
 # ── Checks ───────────────────────────────────────────────────────────
 zsh_path="$(command -v zsh || true)"
-current_shell="$(getent passwd "$USER" | cut -d: -f7)"
+current_shell="$(getent passwd "$USER_NAME" | cut -d: -f7 || true)"
 if [ -n "$zsh_path" ] && [ "$current_shell" != "$zsh_path" ]; then
-  err "Default shell is not zsh. Run: chsh -s $zsh_path"
+  warn "Default shell is not zsh. Run: chsh -s $zsh_path"
 fi
 
 echo ""
