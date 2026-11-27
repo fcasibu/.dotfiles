@@ -202,7 +202,7 @@ local c = {
 	fg_dim = "#9C8767",
 
 	-- accents
-	amber = "#D9A05B",
+	amber = "#D4B26A",
 	sage = "#A3AE78",
 	teal = "#82AFA0",
 	clay = "#CF7F6B",
