@@ -24,7 +24,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "no"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.list = false
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
