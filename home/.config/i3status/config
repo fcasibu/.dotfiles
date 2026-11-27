@@ -4,9 +4,9 @@
 general {
         colors = true
         interval = 5
-        color_good = "#FF9E00"
-        color_degraded = "#C9B87A"
-        color_bad = "#C87A7A"
+        color_good = "#A3AE78"
+        color_degraded = "#D4B26A"
+        color_bad = "#CF7F6B"
 }
 
 order += "cpu_usage"

@@ -45,8 +45,18 @@
 	ui = "auto"
 
 [core]
-	autocrlf = "input"
-	editor = "nvim"
+  autocrlf = "input"
+  editor = "nvim"
+  pager = "delta"
+
+[interactive]
+  diffFilter = "delta --color-only"
+
+[delta]
+  side-by-side = true
+
+[merge]
+  conflictStyle = "zdiff3"
 
 [init]
 	defaultBranch = "main"

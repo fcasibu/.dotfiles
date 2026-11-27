@@ -51,7 +51,7 @@ return {
 			fuzzy = {
 				implementation = "prefer_rust_with_warning",
 			},
-			signature = { enabled = false },
+			signature = { enabled = true },
 			snippets = { preset = "default" },
 		},
 	},

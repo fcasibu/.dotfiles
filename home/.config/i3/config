@@ -47,7 +47,7 @@ exec --no-startup-id vmware-user
 # Flat mouse acceleration for consistent input latency
 exec_always --no-startup-id bash -c 'for id in $(xinput list --id-only); do xinput set-prop $id "libinput Accel Profile Enabled" 0 1 0 2>/dev/null; png'
 
-exec --no-startup-id feh --bg-fill $HOME/.local/share/wallpapers/current.png
+exec --no-startup-id feh --bg-fill $HOME/.local/share/wallpapers/current.jpeg
 
 exec_always --no-startup-id picom -b --corner-radius 10 --rounded-corners-exclude "window_type = 'dock'"
 
@@ -75,9 +75,12 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # Visible focused border
-client.focused #FF9E00 #1A1A1A #A8B590 #FF9E00 #FF9E00
-client.focused_inactive #2C2C2C #1A1A1A #6A7A6A #2C2C2C #2C2C2C
-client.unfocused #2C2C2C #0C0C0C #6A7A6A #2C2C2C #2C2C2C
+client.focused          #D9A05B  #1C150E    #E4D3B0  #D9A05B   #D9A05B
+client.focused_inactive #3A2C1C  #14100B    #9C8767  #3A2C1C   #3A2C1C
+client.unfocused        #3A2C1C  #14100B    #9C8767  #3A2C1C   #3A2C1C
+client.urgent           #CF7F6B  #CF7F6B    #14100B  #CF7F6B   #CF7F6B
+client.placeholder      #3A2C1C  #14100B    #9C8767  #3A2C1C   #3A2C1C
+client.background       #14100B
 
 # Ensure Alacritty (and other apps) keep a visible focused border
 for_window [class="Alacritty"] border pixel 2
@@ -229,12 +232,14 @@ bar {
         position top
         status_command i3status
         colors {
-                background #0C0C0C
-                statusline #FF9E00
-                separator #6A7A6A
-                focused_workspace  #FF9E00 #FF9E00 #0C0C0C
-                active_workspace   #2C2C2C #2C2C2C #A8B590
-                inactive_workspace #0C0C0C #0C0C0C #6A7A6A
-                urgent_workspace   #C87A7A #C87A7A #0C0C0C
+                background #14100B
+                statusline #B9A683
+                separator  #3A2C1C
+
+                focused_workspace   #3A2C1C  #241B12    #D9A05B
+                active_workspace    #3A2C1C  #1C150E    #E4D3B0
+                inactive_workspace  #14100B  #14100B    #9C8767
+                urgent_workspace    #CF7F6B  #CF7F6B    #14100B
+                binding_mode        #D9A05B  #D9A05B    #14100B
         }
 }

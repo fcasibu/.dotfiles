@@ -1,33 +1,53 @@
-# Alacritty colors
 [colors.primary]
-background = "#0C0C0C"
-foreground = "#A8B590"
+background = "#14100B"
+foreground = "#E4D3B0"
+dim_foreground = "#9C8767"
+bright_foreground = "#F2E8D0"
 
 [colors.normal]
-black   = "#0C0C0C"
-red     = "#C87A7A"
-green   = "#A7C080"
-yellow  = "#C9B87A"
-blue    = "#6EA896"
-magenta = "#B89BC0"
-cyan    = "#6EA896"
-white   = "#A8B590"
+black   = "#1A1510"
+red     = "#CF7F6B"
+green   = "#A3AE78"
+yellow  = "#D4B26A"
+blue    = "#86A3B8"
+magenta = "#B99BAE"
+cyan    = "#82AFA0"
+white   = "#B9A683"
 
 [colors.bright]
-black   = "#6A7A6A"
-red     = "#C87A7A"
-green   = "#A7C080"
-yellow  = "#C9B87A"
-blue    = "#6EA896"
-magenta = "#B89BC0"
-cyan    = "#6EA896"
-white   = "#A8B590"
+black   = "#9C8767"
+red     = "#DB9482"
+green   = "#B6C18B"
+yellow  = "#E3C783"
+blue    = "#A0BACB"
+magenta = "#CCB2C2"
+cyan    = "#9BC4B7"
+white   = "#F2E8D0"
 
 [colors.selection]
-background = "#6EA896"
-text       = "#0C0C0C"
+background = "#D9A05B"
+text       = "#14100B"
 
 [colors.cursor]
-cursor = "#A7C080"
-# cursor = "#E57607"
-text   = "#0C0C0C"
+cursor = "#D9A05B"
+text   = "#14100B"
+
+[colors.search.matches]
+foreground = "#14100B"
+background = "#D4B26A"
+
+[colors.search.focused_match]
+foreground = "#14100B"
+background = "#D9A05B"
+
+[colors.hints.start]
+foreground = "#14100B"
+background = "#D9A05B"
+
+[colors.hints.end]
+foreground = "#14100B"
+background = "#82AFA0"
+
+[colors.footer_bar]
+foreground = "#E4D3B0"
+background = "#241B12"
