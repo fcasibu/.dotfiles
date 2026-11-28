@@ -12,3 +12,5 @@ git clone git@github.com:fcasibu/.dotfiles.git
 cd .dotfiles
 ./install.sh
 ```
+
+![./docs/images/showcase.png](Showcase)
