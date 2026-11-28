@@ -2,6 +2,7 @@
 zsh
 tmux
 alacritty
+ghostty
 starship
 zoxide
 

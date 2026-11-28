@@ -1,0 +1,60 @@
+# ── Shell / Startup ──────────────────────────────────────────────────
+command = /bin/zsh -l -c "tmux new-session -A -s main"
+
+# ── Font ─────────────────────────────────────────────────────────────
+font-family = FiraCode Nerd Font Mono
+font-size = 18
+
+font-style-italic = Regular
+font-style-bold-italic = Bold
+font-feature = feat
+
+adjust-cell-height = 2
+
+# ── Cursor ───────────────────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = false
+
+# ── Window & Opacity ─────────────────────────────────────────────────
+window-decoration = false
+maximize = true
+window-padding-x = 8
+window-padding-y = 8
+
+title = "Ghostty"
+
+# ── Mouse, Scrollback & Selection ────────────────────────────────────
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 3
+copy-on-select = clipboard
+selection-word-chars = ",│`|:\"' ()[]{}<>"
+
+scrollback-limit-lines = 10000
+
+# ── Colors ───────────────────────────────────────────────────────────
+background = #14100B
+foreground = #E4D3B0
+
+selection-background = #D9A05B
+selection-foreground = #14100B
+
+cursor-color = #D9A05B
+cursor-text = #14100B
+
+palette = 0=#1A1510
+palette = 1=#CF7F6B
+palette = 2=#A3AE78
+palette = 3=#D4B26A
+palette = 4=#86A3B8
+palette = 5=#B99BAE
+palette = 6=#82AFA0
+palette = 7=#B9A683
+
+palette = 8=#9C8767
+palette = 9=#DB9482
+palette = 10=#B6C18B
+palette = 11=#E3C783
+palette = 12=#A0BACB
+palette = 13=#CCB2C2
+palette = 14=#9BC4B7
+palette = 15=#F2E8D0

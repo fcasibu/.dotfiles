@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-// TODO(fcasibu): make use of yay
+# TODO(fcasibu): make use of yay
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
@@ -115,6 +115,7 @@ mkdir -p \
   "$HOME/.config/rofi" \
   "$HOME/.config/nvim" \
   "$HOME/.config/picom" \
+  "$HOME/.config/ghostty" \
   "$HOME/.tmux" \
   "$HOME/.local/share"
 
