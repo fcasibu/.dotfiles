@@ -83,7 +83,7 @@ for target in \
   "$HOME/.config/fontconfig/fonts.conf" \
   "$HOME/.config/git/config" \
   "$HOME/.config/i3/config" \
-  "$HOME/.config/i3status" \
+  "$HOME/.config/polybar" \
   "$HOME/.config/lazygit" \
   "$HOME/.config/rofi" \
   "$HOME/.config/nvim" \
@@ -110,7 +110,7 @@ mkdir -p \
   "$HOME/.config/fontconfig" \
   "$HOME/.config/git" \
   "$HOME/.config/i3" \
-  "$HOME/.config/i3status" \
+  "$HOME/.config/polybar" \
   "$HOME/.config/lazygit" \
   "$HOME/.config/rofi" \
   "$HOME/.config/nvim" \
