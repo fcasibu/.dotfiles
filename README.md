@@ -12,3 +12,5 @@ git clone git@github.com:fcasibu/.dotfiles.git
 cd .dotfiles
 ./install.sh
 ```
+
+![showcase](./docs/images/showcase.webp)
