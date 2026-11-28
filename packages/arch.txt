@@ -25,6 +25,7 @@ stow
 # X11 / i3
 i3-wm
 i3status
+polybar
 dmenu
 rofi
 dex
