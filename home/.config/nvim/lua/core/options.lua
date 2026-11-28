@@ -30,8 +30,11 @@ vim.opt.list = false
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
--- vim.opt.guicursor = "n-v-c:hor20,i-ci-ve:ver25"
-vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25"
+vim.opt.guicursor = table.concat({
+	"n-c:block",
+	"i-ci:ver25",
+	"v-ve-r-o:hor20",
+}, ",")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
