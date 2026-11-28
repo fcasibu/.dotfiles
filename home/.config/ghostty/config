@@ -11,10 +11,6 @@ font-feature = feat
 
 adjust-cell-height = 2
 
-# ── Cursor ───────────────────────────────────────────────────────────
-cursor-style = block
-cursor-style-blink = false
-
 # ── Window & Opacity ─────────────────────────────────────────────────
 window-decoration = false
 maximize = true
@@ -31,15 +27,19 @@ selection-word-chars = ",│`|:\"' ()[]{}<>"
 
 scrollback-limit-lines = 10000
 
+# --- Cursor ----------------------------------------------------------
+cursor-opacity = 0
+cursor-text = cell-foreground
+custom-shader = ./cursor.glsl
+
+custom-shader-animation = true
+
 # ── Colors ───────────────────────────────────────────────────────────
 background = #14100B
 foreground = #E4D3B0
 
 selection-background = #D9A05B
 selection-foreground = #14100B
-
-cursor-color = #D9A05B
-cursor-text = #14100B
 
 palette = 0=#1A1510
 palette = 1=#CF7F6B
