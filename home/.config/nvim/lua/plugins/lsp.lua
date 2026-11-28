@@ -58,7 +58,7 @@ return {
 				},
 			},
 			inlay_hints = { enabled = true, exclude = {} },
-			codelens = { enabled = true },
+			codelens = { enabled = false },
 			folds = { enabled = false },
 
 			-- Per-server config. "*" applies to all servers.
